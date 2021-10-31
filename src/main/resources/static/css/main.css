@@ -40,6 +40,12 @@ nav{
     padding-bottom: 5px;
     
 }
+
+nav a:last-child{
+    background-color: black;
+    color: white;
+}
+
 h2{
     text-align: center;
     margin-top: 10px;

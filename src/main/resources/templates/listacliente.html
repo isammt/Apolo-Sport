@@ -35,7 +35,7 @@
 		<tbody>
 			<tr th:each="cli : ${clientes}">
 				<td th:text="${cli.id}"></td>
-				<td th:text="${cli.nome}"></td>
+				<td><a  th:text="${cli.nome}" th:href="@{'perfil/'+ ${cli.id}}"></a></td>
 				<td th:text="${cli.cpf}"></td>
 				<td>
 					<a th:href="@{'/upd/' + ${cli.id}}"> Editar 

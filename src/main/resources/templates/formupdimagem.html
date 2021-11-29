@@ -22,10 +22,10 @@
 	
 	<form action="#" th:action="@{'/updi/' + ${idproduto}}" method=post th:object="${produto}" enctype="multipart/form-data">
 		
-		Nome:<div th:text="*{nome}"></div>
-		Categoria: <div th:text="*{categoria}"></div>
-		Valor:<div th:text="*{preco}"></div>
-		<input type="file" name="file" accept="image/png, image/jpeg" />
+		Nome:<span th:text="' ' + *{nome}"></span><br>
+		Categoria: <span th:text="' ' + *{categoria}"></span><br>
+		Valor:<span th:text="' ' + *{preco}"></span><br><br>
+		<input type="file" name="file" accept="image/png, image/jpeg" /><br>
 		<input type="submit" value="Enviar">
 
 	</form>
@@ -34,12 +34,15 @@
 		<thead class="tabHead">
 			<tr class="tabInfo">
 				<td>ID</td>
+				<td>Imagem</td>
 				<td>Nome do arquivo</td>
+				<td>Excluir</td>
 			</tr>
 		</thead>
 		<tbody>
 			<tr th:each="img : ${imagens}">
 				<td th:text="${img.idimagens}"></td>
+				<td><a   th:href="'\\images\\' + ${img.imagem_nome}"><img class="miniImg" th:src="'\\images\\' + ${img.imagem_nome}"></img></a></td>
 				<td th:text="${img.imagem_nome}"></td>
 				<td>
 					<form th:action="@{'/apagar/' + ${img.idimagens}}" method=post>

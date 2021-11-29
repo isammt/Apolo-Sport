@@ -12,11 +12,6 @@ public class ProjetoController {
 
 	
 	
-	@GetMapping("/sobre")
-	public String pagSobre() {
-		return "sobre";
-	}
-	
 	@GetMapping("/cadastro")
 	public String pagCadastro() {
 		return "cadastro";

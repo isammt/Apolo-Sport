@@ -5,8 +5,10 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" th:href="@{css/main.css}">
+	<link rel="stylesheet" th:href="@{css/clientes.css}">
 	<script th:src="@{js/main.js}"></script>
-	<title>Apolo Sport - Cadastro</title>
+
+	<title>Apolo Sport - Lista Clientes</title>
 </head>
 <body>
 	<h1>Apolo Sport</h1>
@@ -20,11 +22,32 @@
         <a th:href="@{/clientes}">Clientes</a>
     </nav>
 	
-	<form class="form" action="#" th:action="@{/cliente}" method=post th:object="${cliente}">
-		Nome: <input  maxlength="45" type="text" th:field="*{nome}"><br>
-		CPF: <input maxlength="11" type="text" th:field="*{cpf}"><br>
-		<input type="submit" value="Cadastrar">
-	
-	</form>
+	<table class="tabC">
+		<thead class="tabHead">
+			<tr class="tabInfo">
+				<td>ID</td>
+				<td>Nome</td>
+				<td>CPF</td>
+				<td>Editar Cliente</td>
+				<td>Excluir Cliente</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="cli : ${clientes}">
+				<td th:text="${cli.id}"></td>
+				<td th:text="${cli.nome}"></td>
+				<td th:text="${cli.cpf}"></td>
+				<td>
+					<a th:href="@{'/upd/' + ${cli.id}}"> Editar 
+					</a> 
+				</td>
+				<td>
+					<form th:action="@{'apagar/cliente/' + ${cli.id}}" method=post>
+						<input type="submit" value="Excluir">
+					</form>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 </body>
 </html>

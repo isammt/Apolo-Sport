@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" th:href="@{css/main.css}">
+	<link rel="stylesheet" th:href="@{css/clientes.css}">
+	<script th:src="@{js/main.js}"></script>
+
+	<title>Apolo Sport - Lista Produtos</title>
+</head>
+<body>
+	<h1>Apolo Sport</h1>
+	<nav>
+		<a th:href="@{/}">Home</a>
+        <a th:href="@{/masculino}">Masculino</a>
+        <a th:href="@{/feminino}">Feminino</a>
+        <a th:href="@{/produto}">Cadastro Produtos</a>
+        <a th:href="@{/produtos}">Produtos</a>
+        <a th:href="@{/cliente}">Cadastro</a>
+        <a th:href="@{/clientes}">Clientes</a>
+    </nav>
+	
+	<table class="tabC">
+		<thead class="tabHead">
+			<tr class="tabInfo">
+				<td>ID</td>
+				<td>Nome</td>
+				<td>Categoria</td>
+				<td>Valor</td>
+				<td>Inserir Imagem</td>
+				<td>Editar Produto</td>
+				<td>Excluir Produto</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="pro : ${produtos}">
+				<td th:text="${pro.idproduto}"></td>
+				<td th:text="${pro.nome}"></td>
+				<td th:text="${pro.categoria}"></td>
+				<td th:text="${pro.preco}"></td>
+				<td>
+					<a th:href="@{'/updi/' + ${pro.idproduto}}"> Inserir Imagens 
+					</a> 
+				</td>
+				<td>
+					<a th:href="@{'/updp/' + ${pro.idproduto}}"> Editar 
+					</a> 
+				</td>
+				<td>
+					<form th:action="@{'apagar/produto/' + ${pro.idproduto}}" method=post>
+						<input type="submit" value="Excluir">
+					</form>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	
+</body>
+</html>

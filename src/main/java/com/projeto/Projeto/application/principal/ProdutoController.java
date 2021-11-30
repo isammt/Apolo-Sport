@@ -51,10 +51,12 @@ public class ProdutoController {
 	public String getProd(@PathVariable("idproduto") int idproduto, Model model) {
 		ProdutoService ps = context.getBean(ProdutoService.class);
 		Map<String, Object> mapa = ps.getProduto(idproduto);
+		List<Map<String, Object>> imagens = ps.getProdutoImagensByIdProduto(idproduto);
 		model.addAttribute("idproduto",mapa.get("idproduto"));
 		model.addAttribute("nome",mapa.get("nome"));
 		model.addAttribute("preco",mapa.get("preco"));
 		model.addAttribute("categoria",mapa.get("categoria"));
+		model.addAttribute("imagens",imagens);
 		return "prod";
 	}
 	

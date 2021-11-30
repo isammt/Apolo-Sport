@@ -21,7 +21,7 @@
     </nav>
     <div class="container">
     	<div class="cardProduto" th:each="pro : ${produtos}">
-    		<img th:src="'\\images\\' + ${pro.imagem_nome}"></img><br>
+    		<a class="imgCard" th:href="'\\prod\\' + ${pro.idproduto}"><img th:src="'\\images\\' + ${pro.imagem_nome}"></img></a><br>
 			<span th:text="${pro.nome}"></span><br>
 			<span>R$:</span><span th:text="${pro.preco}"></span>						
 		</div>

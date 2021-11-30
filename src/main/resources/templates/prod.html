@@ -20,13 +20,19 @@
         <a th:href="@{/clientes}">Clientes</a>
     </nav>
 	
-	<h2 th:text="${'Nome do produto: ' + nome}">
-	</h2>
-	<h2 th:text="${'Categoria: ' + categoria}">
-	</h2>
-	<h2 th:text="${'Valor: ' + preco}">
-	</h2>
-	
+    <div class="prodG">
+    	<div class="container">
+    		<div th:each="img : ${imagens}">
+    		
+    		<a th:href="'\\images\\' + ${img.imagem_nome}"><img th:src="'\\images\\' + ${img.imagem_nome}"></img></a>
+    		
+    		</div><br>
+			<div>
+			<h1  th:text="${nome}"></h1><br>
+			<h3>R$: <span th:text="${preco}"></span></h3>	
+			</div>					
+		</div>
+	</div>
 
 </body>
 </html>
